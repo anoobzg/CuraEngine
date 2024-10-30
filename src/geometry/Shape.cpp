@@ -5,7 +5,11 @@
 
 #include <algorithm>
 #include <cstddef>
+
+#undef DEBUG
 #include <mapbox/geometry/wagyu/wagyu.hpp>
+
+
 #include <numeric>
 #include <unordered_set>
 

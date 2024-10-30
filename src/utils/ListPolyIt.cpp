@@ -5,6 +5,7 @@
 
 #include <cmath> // isfinite
 #include <sstream> // ostream
+#include <assert.h>
 
 #include "geometry/Polygon.h"
 #include "utils/AABB.h" // for debug output svg html

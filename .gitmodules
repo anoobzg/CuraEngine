@@ -1,0 +1,3 @@
+[submodule "cmake"]
+	path = cmake
+	url = git@gitee.com:tjourney/cmake.git

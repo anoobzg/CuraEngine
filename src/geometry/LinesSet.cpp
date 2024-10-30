@@ -4,6 +4,7 @@
 #include "geometry/LinesSet.h"
 
 #include <numeric>
+#include <assert.h>
 
 #include "geometry/ClosedLinesSet.h"
 #include "geometry/OpenLinesSet.h"

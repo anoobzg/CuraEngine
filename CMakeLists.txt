@@ -4,14 +4,21 @@
 cmake_policy(SET CMP0091 NEW)  # For MSVC flags, will be ignored on non-Windows OS's
 cmake_minimum_required(VERSION 3.20)
 project(CuraEngine)
-find_package(standardprojectsettings REQUIRED)  # imports the cmake module https://github.com/Ultimaker/conan-ultimaker-index/recipes/standardprojectsettings
+
+include(cmake/entry/desktop-cpp.cmake)
+__install_conan_requirements(MSVC_RUNTIME "dynamic")
+
+__enable_cxx20()
+
+# find_package(standardprojectsettings REQUIRED)  # imports the cmake module https://github.com/Ultimaker/conan-ultimaker-index/recipes/standardprojectsettings
+include(StandardProjectSettings.cmake)
 AssureOutOfSourceBuilds()
 
-option(ENABLE_ARCUS "Enable support for ARCUS" ON)
+option(ENABLE_ARCUS "Enable support for ARCUS" OFF)
 option(ENABLE_TESTING "Build with unit tests" OFF)
 option(ENABLE_BENCHMARKS "Build with Benchmarks" OFF)
 option(EXTENSIVE_WARNINGS "Build with all warnings" ON)
-option(ENABLE_PLUGINS "Build with plugins" ON)
+option(ENABLE_PLUGINS "Build with plugins" OFF)
 option(ENABLE_REMOTE_PLUGINS "Build with all warnings" OFF)
 option(ENABLE_SENTRY "Send crash data via Sentry" OFF)
 option(ENABLE_MORE_COMPILER_OPTIMIZATION_FLAGS "Enable more optimization flags" ON)
@@ -216,7 +223,6 @@ find_package(Boost REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(fmt REQUIRED)
 find_package(range-v3 REQUIRED)
-find_package(scripta REQUIRED)
 
 if (ENABLE_SENTRY)
     find_package(sentry REQUIRED)
@@ -236,7 +242,6 @@ target_link_libraries(_CuraEngine
         rapidjson
         stb::stb
         boost::boost
-        scripta::scripta
         $<$<TARGET_EXISTS:semver::semver>:semver::semver>
         $<$<TARGET_EXISTS:curaengine_grpc_definitions::curaengine_grpc_definitions>:curaengine_grpc_definitions::curaengine_grpc_definitions>
         $<$<TARGET_EXISTS:asio-grpc::asio-grpc>:asio-grpc::asio-grpc>

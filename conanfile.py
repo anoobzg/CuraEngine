@@ -6,7 +6,8 @@ class PALRecipe(ConanFile):
 
     def requirements(self):
         self.requires("clipper/6.4.2")
-        # self.requires("protobuf/3.21.12")
+        self.requires("protobuf/3.21.12")
+        #self.requires("arcus/4.9.1")
         self.requires("rapidjson/cci.20230929")
         self.requires("stb/cci.20230920")
         self.requires("boost/1.83.0")

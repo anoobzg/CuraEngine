@@ -14,7 +14,7 @@ __enable_cxx20()
 include(StandardProjectSettings.cmake)
 AssureOutOfSourceBuilds()
 
-option(ENABLE_ARCUS "Enable support for ARCUS" OFF)
+option(ENABLE_ARCUS "Enable support for ARCUS" ON)
 option(ENABLE_TESTING "Build with unit tests" OFF)
 option(ENABLE_BENCHMARKS "Build with Benchmarks" OFF)
 option(EXTENSIVE_WARNINGS "Build with all warnings" ON)
@@ -41,7 +41,8 @@ endif ()
 
 message(STATUS "Building with Arcus: ${ENABLE_ARCUS}")
 if (${ENABLE_ARCUS})
-    find_package(arcus REQUIRED)
+    #find_package(arcus REQUIRED)
+    add_subdirectory(libArcus)
     protobuf_generate_cpp(engine_PB_SRCS engine_PB_HEADERS Cura.proto)
 endif ()
 
@@ -209,7 +210,7 @@ if (${EXTENSIVE_WARNINGS})
 endif ()
 
 if (ENABLE_ARCUS)
-    target_link_libraries(_CuraEngine PUBLIC arcus::arcus)
+    target_link_libraries(_CuraEngine PUBLIC Arcus)
 endif ()
 
 find_package(mapbox-wagyu REQUIRED)

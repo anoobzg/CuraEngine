@@ -9,7 +9,6 @@
 namespace cura
 {
 
-class PointsSet;
 class Polygon;
 class Shape;
 
@@ -22,10 +21,10 @@ public:
     AABB(); //!< initializes with invalid min and max
     AABB(const Point2LL& min, const Point2LL& max); //!< initializes with given min and max
     AABB(const Shape& shape); //!< Computes the boundary box for the given shape
-    AABB(const PointsSet& poly); //!< Computes the boundary box for the given polygons
+    AABB(const Polygon& poly); //!< Computes the boundary box for the given polygons
 
     void calculate(const Shape& shape); //!< Calculates the aabb for the given shape (throws away old min and max data of this aabb)
-    void calculate(const PointsSet& poly); //!< Calculates the aabb for the given polygon (throws away old min and max data of this aabb)
+    void calculate(const Polygon& poly); //!< Calculates the aabb for the given polygon (throws away old min and max data of this aabb)
 
     /*!
      * Whether the bounding box contains the specified point.
@@ -81,7 +80,7 @@ public:
      */
     void include(const Point2LL& point);
 
-    void include(const PointsSet& polygon);
+    void include(const Polygon& polygon);
 
     /*!
      * \brief Includes the specified bounding box in the bounding box.

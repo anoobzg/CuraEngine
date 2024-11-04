@@ -199,23 +199,26 @@ Raft::LayerType Raft::getLayerType(LayerIndex layer_index)
     const auto interface_layers = Raft::getInterfaceLayers();
     const auto surface_layers = Raft::getSurfaceLayers();
 
-    if (layer_index < -LayerIndex(airgap + surface_layers + interface_layers))
+    if (layer_index < -airgap - surface_layers - interface_layers)
     {
         return LayerType::RaftBase;
     }
-    if (layer_index < -LayerIndex(airgap + surface_layers))
+    else if (layer_index < -airgap - surface_layers)
     {
         return LayerType::RaftInterface;
     }
-    if (layer_index < -LayerIndex(airgap))
+    else if (layer_index < -airgap)
     {
         return LayerType::RaftSurface;
     }
-    if (layer_index < LayerIndex(0))
+    else if (layer_index < 0)
     {
         return LayerType::Airgap;
     }
-    return LayerType::Model;
+    else
+    {
+        return LayerType::Model;
+    }
 }
 
 size_t Raft::getLayersAmount(const std::string& extruder_nr_setting_name, const std::string& target_raft_section)

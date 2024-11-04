@@ -7,7 +7,6 @@
 #include <list>
 #include <memory> // smart pointers
 #include <vector>
-#include <assert.h>
 
 #include "utils/ExtrusionJunction.h"
 

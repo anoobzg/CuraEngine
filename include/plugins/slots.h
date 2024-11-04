@@ -160,7 +160,8 @@ public:
     {
         if (slot_id == T::slot_id)
         {
-            value_.proxy.addPlugin(name, version, std::forward<decltype(channel)>(channel));
+            using Tp = typename Unit<T>::value_type;
+            value_.proxy = Tp{ name, version, std::forward<decltype(channel)>(channel) };
             return;
         }
         Base::connect(slot_id, name, version, std::forward<decltype(channel)>(channel));

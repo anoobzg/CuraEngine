@@ -6,7 +6,6 @@
 
 #include <cassert>
 #include <cstddef>
-#include <memory>
 #include <string>
 
 #include "utils/NoCopy.h"
@@ -39,14 +38,14 @@ public:
      * can assume that it is safe to access this without checking whether it is
      * initialised.
      */
-    std::shared_ptr<Communication> communication_;
+    Communication* communication_ = nullptr;
 
     /*
      * \brief The slice that is currently ongoing.
      *
      * If no slice has started yet, this will be a nullptr.
      */
-    std::shared_ptr<Slice> current_slice_;
+    Slice* current_slice_ = nullptr;
 
     /*!
      * \brief ThreadPool with lifetime tied to Application

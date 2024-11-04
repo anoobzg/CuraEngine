@@ -7,7 +7,6 @@
 
 #include "../utils/AABB.h"
 #include "DensityProvider.h"
-#include "geometry/Point3LL.h"
 
 namespace cura
 {

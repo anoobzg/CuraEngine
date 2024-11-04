@@ -5,7 +5,6 @@
 #define UTILS_AABB3D_H
 
 #include "geometry/Point2LL.h"
-#include "geometry/Point3LL.h"
 #include "utils/AABB.h"
 
 namespace cura

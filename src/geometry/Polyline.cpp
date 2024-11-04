@@ -3,7 +3,6 @@
 
 #include "geometry/Polyline.h"
 
-#include <algorithm>
 #include <numbers>
 #include <numeric>
 
@@ -105,7 +104,10 @@ Polyline::const_segments_iterator Polyline::endSegments() const
     {
         return const_segments_iterator(end(), begin(), end());
     }
-    return const_segments_iterator(size() > 1 ? std::prev(end()) : end(), begin(), end());
+    else
+    {
+        return const_segments_iterator(size() > 1 ? std::prev(end()) : end(), begin(), end());
+    }
 }
 
 Polyline::segments_iterator Polyline::beginSegments()
@@ -119,7 +121,10 @@ Polyline::segments_iterator Polyline::endSegments()
     {
         return segments_iterator(end(), begin(), end());
     }
-    return segments_iterator(size() > 1 ? std::prev(end()) : end(), begin(), end());
+    else
+    {
+        return segments_iterator(size() > 1 ? std::prev(end()) : end(), begin(), end());
+    }
 }
 
 coord_t Polyline::length() const
